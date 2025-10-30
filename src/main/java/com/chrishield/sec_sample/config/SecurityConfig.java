@@ -46,6 +46,21 @@ public class SecurityConfig {
         return manager;
     }
 
+     /*
+    FilterChain Authorization (SecurityFilterChain) evaluates requests BEFORE
+    they reach your controller, and checks if this request should be allowed
+    to proceed to the controller at all.
+
+    SecurityFilterChain (HttpSecurity rules) secures URLs (routes)
+    before the request reaches your code.
+
+    @PreAuthorize (Method Security)	secures methods inside controllers
+    or services after URL security has passed.
+
+    SecurityFilterChain is checked first, at the HTTP filter level.
+    @PreAuthorize is checked later, when calling the method.
+     */
+
     @Bean // All incoming HTTP requests pass through a chain of filters before reaching our application logic.
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         // It defines the security rules for our application by configuring
@@ -88,3 +103,4 @@ public class SecurityConfig {
         return http.build();
     }
 }
+
